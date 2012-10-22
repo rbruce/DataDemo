@@ -35,8 +35,10 @@ public class DataDemoListener implements Listener {
 	 */
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
+		plugin.setMetadata(event.getPlayer(), "god", false, plugin);
 		event.getPlayer().sendMessage(
 				this.plugin.getConfig().getString("sample.message"));
+
 	}
 
 	/*
@@ -57,13 +59,16 @@ public class DataDemoListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void demoEvent(PlayerInteractEvent event) {
 		if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
-			Block b = event.getClickedBlock();
-			if (b != null) {
-				Location loc = b.getLocation();
-				loc.getWorld().strikeLightning(loc);
-				b.setType(Material.FIRE);
-				event.getPlayer().sendMessage("you are dangerous");
-				plugin.logger.info(event.getPlayer() + " is blowing things up");
+			if ((Boolean) plugin.getMetadata(event.getPlayer(), "god", plugin)) {
+				Block b = event.getClickedBlock();
+				if (b != null) {
+					Location loc = b.getLocation();
+					loc.getWorld().strikeLightning(loc);
+					b.setType(Material.FIRE);
+					event.getPlayer().sendMessage("you are dangerous");
+					plugin.logger.info(event.getPlayer()
+							+ " is blowing things up");
+				}
 			}
 		}
 	}
