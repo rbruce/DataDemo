@@ -49,7 +49,6 @@ public class DataDemoListener implements Listener {
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEntityEvent event) {
 		final EntityType entityType = event.getRightClicked().getType();
-
 		event.getPlayer().sendMessage(
 				MessageFormat.format(
 						"You interacted with a {0} it has an id of {1}",

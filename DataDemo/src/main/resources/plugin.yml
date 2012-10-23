@@ -7,9 +7,9 @@ author: SampleAuthor
 description: ${project.description}
 commands:
   demo:
-    description: set the greeting message
+    description: all commands begin with demo
     usage: demo /<command> arguments
-    permission: demo.message
+    permission: demo.*
 permissions:
   demo.*:
     description: gives all permissions of the SamplePlugin
