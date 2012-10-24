@@ -35,7 +35,7 @@ public class DataDemoListener implements Listener {
 	 */
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		plugin.setMetadata(event.getPlayer(), "god", false, plugin);
+		plugin.godMode.put(event.getPlayer(), false);
 		event.getPlayer().sendMessage(
 				this.plugin.getConfig().getString("sample.message"));
 
@@ -59,7 +59,7 @@ public class DataDemoListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void demoEvent(PlayerInteractEvent event) {
 		if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
-			if ((Boolean) plugin.getMetadata(event.getPlayer(), "god", plugin)) {
+			if (plugin.godMode.get(event.getPlayer())) {
 				Block b = event.getClickedBlock();
 				if (b != null) {
 					Location loc = b.getLocation();

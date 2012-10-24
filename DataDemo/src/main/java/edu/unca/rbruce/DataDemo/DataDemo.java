@@ -1,6 +1,8 @@
 package edu.unca.rbruce.DataDemo;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -15,11 +17,16 @@ public class DataDemo extends JavaPlugin {
 	 * This is called when your plug-in is enabled
 	 */
 	DataDemoLogger logger;
+	public Map<Player, Boolean> godMode;
 
 	@Override
 	public void onEnable() {
+
 		// save the configuration file
 		saveDefaultConfig();
+
+		// create hashmap data structure
+		godMode = new HashMap<Player, Boolean>();
 
 		// Create logger
 		logger = new DataDemoLogger(this);

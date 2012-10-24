@@ -37,7 +37,7 @@ public class DataDemoCommandExecutor implements CommandExecutor {
 		} else if (args[0].equalsIgnoreCase("god")
 				&& sender.hasPermission("demo.god")) {
 			Player fred = (Player) sender;
-			plugin.setMetadata(fred, "god", true, plugin);
+			plugin.godMode.put(fred, true);
 			sender.sendMessage(ChatColor.RED + fred.getName()
 					+ " you are a god now");
 			plugin.logger.info(fred.getName() + " has been made a god");
@@ -45,7 +45,7 @@ public class DataDemoCommandExecutor implements CommandExecutor {
 		} else if (args[0].equalsIgnoreCase("human")
 				&& sender.hasPermission("demo.god")) {
 			Player fred = (Player) sender;
-			plugin.setMetadata(fred, "god", false, plugin);
+			plugin.godMode.put(fred, false);
 			sender.sendMessage(ChatColor.RED + fred.getName()
 					+ " you are human now");
 			plugin.logger.info(fred.getName() + " is no longer a god");
