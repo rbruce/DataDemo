@@ -27,31 +27,28 @@ public class DataDemoCommandExecutor implements CommandExecutor {
 	 */
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
-		if (args.length == 0) {
-			sender.sendMessage(ChatColor.RED + command.getUsage());
-			return false;
-		} else if (!(sender instanceof Player)) {
+		if (!(sender instanceof Player)) {
 			sender.sendMessage(ChatColor.RED
 					+ "you must be logged on to use these commands");
 			return false;
-		} else if (args[0].equalsIgnoreCase("god")
-				&& sender.hasPermission("demo.god")) {
+		} else if (command.getName().equalsIgnoreCase("god")
+				&& sender.hasPermission("DataDemo.god")) {
 			Player fred = (Player) sender;
 			plugin.setMetadata(fred, "god", true, plugin);
 			sender.sendMessage(ChatColor.RED + fred.getName()
 					+ " you are a god now");
 			plugin.logger.info(fred.getName() + " has been made a god");
 			return true;
-		} else if (args[0].equalsIgnoreCase("human")
-				&& sender.hasPermission("demo.god")) {
+		} else if (command.getName().equalsIgnoreCase("human")
+				&& sender.hasPermission("DataDemo.god")) {
 			Player fred = (Player) sender;
 			plugin.setMetadata(fred, "god", false, plugin);
 			sender.sendMessage(ChatColor.RED + fred.getName()
 					+ " you are human now");
 			plugin.logger.info(fred.getName() + " is no longer a god");
 			return true;
-		} else if (args[0].equalsIgnoreCase("message")
-				&& sender.hasPermission("demo.message")) {
+		} else if (command.getName().equalsIgnoreCase("message")
+				&& sender.hasPermission("DataDemo.message") && args.length == 0) {
 			this.plugin.getConfig().set("sample.message",
 					Joiner.on(' ').join(args));
 			return true;

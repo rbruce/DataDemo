@@ -6,18 +6,26 @@ version: ${project.version}
 author: SampleAuthor
 description: ${project.description}
 commands:
-  demo:
-    description: all commands begin with demo
-    usage: demo /<command> arguments
-    permission: demo.*
+  message:
+    description: set the greeting message
+    usage: /<command> message
+    permission: DataDemo.message
+  god:
+    description: gives the lighting bolt power
+    usage: /<command> 
+    permission: DataDemo.god
+  human:
+    description: removes the lighting bolt power
+    usage: /<command> 
+    permission: DataDemo.human  
 permissions:
-  demo.*:
+  DataDemo.*:
     description: gives all permissions of the plugin commands
     default: true
     children:
-      demo.message:
-        description: gives permission to set the greeting message 
-      demo.god:
-        description: give the lighting bolt power
-      demo.human:
-        description: removes the lighting bolt power
+      DataDemo.message:
+        default: op 
+      DataDemo.god:
+        default: true
+      DataDemo.human:
+        default: true

@@ -15,6 +15,7 @@ public class DataDemo extends JavaPlugin {
 	 * This is called when your plug-in is enabled
 	 */
 	DataDemoLogger logger;
+	DataDemoCommandExecutor executor;
 
 	@Override
 	public void onEnable() {
@@ -24,11 +25,16 @@ public class DataDemo extends JavaPlugin {
 		// Create logger
 		logger = new DataDemoLogger(this);
 
+		// Create Command Executor
+		executor = new DataDemoCommandExecutor(this);
+
 		// Create the SampleListener
 		new DataDemoListener(this);
 
 		// set the command executor for sample
-		this.getCommand("demo").setExecutor(new DataDemoCommandExecutor(this));
+		this.getCommand("message").setExecutor(executor);
+		this.getCommand("god").setExecutor(executor);
+		this.getCommand("human").setExecutor(executor);
 	}
 
 	/*
