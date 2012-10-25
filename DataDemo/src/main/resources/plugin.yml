@@ -8,7 +8,7 @@ description: ${project.description}
 commands:
   message:
     description: set the greeting message
-    usage: /<command> message
+    usage: /<command> greeting message
     permission: DataDemo.message
   god:
     description: gives the lighting bolt power

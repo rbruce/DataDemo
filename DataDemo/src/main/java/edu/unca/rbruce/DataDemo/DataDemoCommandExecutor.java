@@ -48,7 +48,7 @@ public class DataDemoCommandExecutor implements CommandExecutor {
 			plugin.logger.info(fred.getName() + " is no longer a god");
 			return true;
 		} else if (command.getName().equalsIgnoreCase("message")
-				&& sender.hasPermission("DataDemo.message") && args.length == 0) {
+				&& sender.hasPermission("DataDemo.message") && args.length > 0) {
 			this.plugin.getConfig().set("sample.message",
 					Joiner.on(' ').join(args));
 			return true;
